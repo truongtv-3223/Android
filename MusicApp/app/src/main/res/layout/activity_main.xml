@@ -15,15 +15,16 @@
         android:paddingTop="15dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/purple"
+        android:background="@color/white"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
-        android:paddingBottom="10dp"
+        android:visibility="invisible"
         android:id="@+id/constraintlayout"
         android:layout_height="wrap_content">
+
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_margin="7dp"
@@ -33,18 +34,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/sb"
-            app:layout_constraintTop_toBottomOf="@+id/outSongAuthor"
+            app:layout_constraintTop_toBottomOf="@+id/btnPlay"
             app:layout_constraintStart_toStartOf="@+id/outSongAuthor"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="75dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
+            android:textSize="16dp"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:id="@+id/outSongName"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cimg"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="10dp"
@@ -53,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Author"
-            android:textSize="15dp"
+            android:textSize="14dp"
             android:id="@+id/outSongAuthor"
             app:layout_constraintStart_toStartOf="@+id/outSongName"
             app:layout_constraintTop_toBottomOf="@+id/outSongName"
@@ -66,9 +70,9 @@
             android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_next"
+            app:layout_constraintTop_toBottomOf="@+id/outSongName"
             app:layout_constraintBottom_toBottomOf="@+id/sb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <ImageButton
             android:id="@+id/btnPlay"
@@ -77,9 +81,9 @@
             android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_play"
+            app:layout_constraintTop_toBottomOf="@+id/outSongName"
             app:layout_constraintBottom_toBottomOf="@+id/sb"
-            app:layout_constraintEnd_toStartOf="@+id/btnNext"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/btnNext" />
 
         <ImageButton
             android:id="@+id/btnPre"
@@ -88,16 +92,16 @@
             android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_pre"
+            app:layout_constraintTop_toBottomOf="@+id/outSongName"
             app:layout_constraintBottom_toBottomOf="@+id/sb"
-            app:layout_constraintEnd_toStartOf="@+id/btnPlay"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toStartOf="@+id/btnPlay" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="-10dp"
             android:text="00:00"
-            android:id="@+id/outStartTime"
+            android:id="@+id/outCurrentTime"
             app:layout_constraintStart_toEndOf="@+id/cimg"
             app:layout_constraintTop_toBottomOf="@+id/sb" />
         <TextView
@@ -106,7 +110,7 @@
             android:layout_marginStart="-10dp"
             android:text="00:00"
             android:id="@+id/outEndTime"
-            android:layout_marginRight="5dp"
+            android:paddingRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sb" />
     </androidx.constraintlayout.widget.ConstraintLayout>

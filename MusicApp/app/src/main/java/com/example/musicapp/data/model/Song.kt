@@ -1,4 +1,12 @@
 package com.example.musicapp.data.model
 
-class Song(val img: Int, val name : String, val author : String, val time : Int) {
+import android.os.Parcelable
+import java.io.Serializable
+
+ class Song(var id: String,
+           var name: String,
+           var author: String,
+           var albumUri: String,
+           var uri: String,
+           var time: Int) : Serializable{
 }

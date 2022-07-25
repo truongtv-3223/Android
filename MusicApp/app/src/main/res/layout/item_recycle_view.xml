@@ -10,6 +10,7 @@
         android:layout_height="55dp"
         android:id="@+id/containerImageView"
         android:elevation="0dp"
+        android:layout_marginStart="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="8dp">
@@ -21,21 +22,24 @@
             android:id="@+id/imgSong" />
     </androidx.cardview.widget.CardView>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="21dp"
+        android:textSize="17dp"
         android:textColor="@color/black"
         android:layout_marginTop="5dp"
         android:id="@+id/outSongName"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/containerImageView"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="10dp"
-        android:text="Song Name"/>
+        android:text="Song Name "/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Author"
-        android:textSize="17dp"
+        android:textSize="14dp"
         android:id="@+id/outSongAuthor"
         app:layout_constraintStart_toStartOf="@+id/outSongName"
         app:layout_constraintTop_toBottomOf="@+id/outSongName"
