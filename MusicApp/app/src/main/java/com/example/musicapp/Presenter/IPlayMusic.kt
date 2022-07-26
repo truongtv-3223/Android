@@ -10,6 +10,7 @@ interface IPlayMusic {
         fun onStartSong(pos : Int)
         fun onPauseSong()
         fun onPlaySong()
+        fun disPlayCurrentSongTime(time : Int)
     }
     interface Presenter{
         fun getSong(activity : AppCompatActivity)
@@ -18,5 +19,8 @@ interface IPlayMusic {
         fun handleStartSong(pos : Int)
         fun handlePreviousSong()
         fun handleChangSeekBar(value : Int)
+        fun stopMusicService()
+        fun registerBroadcast()
+        fun unRegisterBroadcast()
     }
 }

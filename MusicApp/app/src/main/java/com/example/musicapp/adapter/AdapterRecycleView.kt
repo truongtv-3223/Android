@@ -16,12 +16,12 @@ import com.example.musicapp.R
 import com.example.musicapp.data.model.Song
 import com.example.musicapp.utils.MEDIA_EXTERNAL_AUDIO_URI
 
-class AdapterRecycleView(val listener : ItemClickListener) : RecyclerView.Adapter<AdapterRecycleView.ViewHolder?>() {
+class AdapterRecycleView(private val listener : ItemClickListener) : RecyclerView.Adapter<AdapterRecycleView.ViewHolder?>() {
 
     private var mContext : Context? =null
     private var listSong = mutableListOf<Song>()
-    fun setData(listSong: MutableList<Song>){
-        this.listSong = listSong
+    fun setData(listSong: List<Song>){
+        this.listSong = listSong as MutableList<Song>
         notifyDataSetChanged()
     }
 
@@ -48,7 +48,7 @@ class AdapterRecycleView(val listener : ItemClickListener) : RecyclerView.Adapte
     }
 
     override fun getItemCount(): Int {
-        if(listSong==null) return 0
+     //   if(listSong==null) return 0
         return listSong.size
     }
 

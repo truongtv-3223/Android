@@ -8,5 +8,5 @@ import java.io.Serializable
            var author: String,
            var albumUri: String,
            var uri: String,
-           var time: Int) : Serializable{
+           var time: Int){
 }
