@@ -22,8 +22,7 @@ import com.example.musicapp.data.model.Song
 import com.example.musicapp.data.repo.SongRepo
 import com.example.musicapp.data.repo.resource.local.LocalSong
 import com.example.musicapp.databinding.ActivityMainBinding
-import com.example.musicapp.utils.MEDIA_EXTERNAL_AUDIO_URI
-import com.example.musicapp.utils.constant
+import com.example.musicapp.utils.*
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.concurrent.TimeUnit
 
@@ -68,7 +67,9 @@ class MainActivity : AppCompatActivity(), IPlayMusic.View,AdapterRecycleView.Ite
                 }
 
                 override fun onStopTrackingTouch(p0: SeekBar?) {
-                    mPlayMusicPresenter.handleChangSeekBar(p0!!.progress)
+                    if (p0 != null) {
+                        mPlayMusicPresenter.handleChangSeekBar(p0.progress)
+                    }
                 }
 
             })
@@ -117,15 +118,17 @@ class MainActivity : AppCompatActivity(), IPlayMusic.View,AdapterRecycleView.Ite
             .placeholder(resources.getDrawable(R.drawable.head))
             .into(viewBinding.cimg)
         startAnim()
-        viewBinding.constraintlayout.visibility = View.VISIBLE
-        viewBinding.btnPlay.setImageResource(R.drawable.ic_play)
+        viewBinding.apply {
+            constraintlayout.visibility = View.VISIBLE
+            btnPlay.setImageResource(R.drawable.ic_play)
 
-        viewBinding.outEndTime.text = constant.getTimetoSecond(listSong.get(pos).time)
-        viewBinding.outSongAuthor.text = listSong.get(pos).author
-        viewBinding.outSongName.text = listSong.get(pos).name
-        viewBinding.seekbar.max = listSong.get(pos).time
-        viewBinding.outCurrentTime.text = "00:00"
-        viewBinding.seekbar.progress = 0
+            outEndTime.text = constant.getTimetoSecond(listSong.get(pos).time)
+            outSongAuthor.text = listSong.get(pos).author
+            outSongName.text = listSong.get(pos).name
+            seekbar.max = listSong.get(pos).time
+            outCurrentTime.text = START_TIME
+            seekbar.progress = START_PROCESS_SEEK_BAR
+        }
     }
 
 
@@ -146,7 +149,7 @@ class MainActivity : AppCompatActivity(), IPlayMusic.View,AdapterRecycleView.Ite
          monitor= object : Runnable{
              override fun run() {
                  viewBinding.cimg.rotation= stateRotate++.toFloat()
-                 mHandler.postDelayed(this, 50)
+                 mHandler.postDelayed(this, TIME_SLEEP_50)
                  }
              }
          mHandler.post(monitor)

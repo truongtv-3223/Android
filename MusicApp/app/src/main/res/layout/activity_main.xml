@@ -11,107 +11,109 @@
         android:id="@+id/recyleview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:background="@drawable/bg_layout"
-        android:paddingTop="15dp" />
+        android:paddingTop="@dimen/padding_15dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@color/white"
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        android:visibility="invisible"
         android:id="@+id/constraintlayout"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:visibility="invisible">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="7dp"
+            android:id="@+id/cimg"
+            android:layout_width="@dimen/size_cimg"
+            android:layout_height="@dimen/size_cimg"
+            android:layout_margin="@dimen/margin_7dp"
             android:src="@drawable/head"
-            android:id="@+id/cimg"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <SeekBar
+            android:id="@+id/seekbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/seekbar"
-            app:layout_constraintTop_toBottomOf="@+id/btnPlay"
-            app:layout_constraintStart_toStartOf="@+id/outSongAuthor"
+            android:layout_marginStart="@dimen/margin_seek_bar"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="75dp"/>
+            app:layout_constraintStart_toStartOf="@+id/outSongAuthor"
+            app:layout_constraintTop_toBottomOf="@+id/btnPlay" />
 
         <TextView
+            android:id="@+id/outSongName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:id="@+id/outSongName"
-            android:maxLines="1"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_10dp"
             android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Song Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cimg"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginStart="10dp"
-            android:text="Song Name"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
+            android:id="@+id/outSongAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Author"
-            android:textSize="14dp"
-            android:id="@+id/outSongAuthor"
+            android:textSize="@dimen/text_size_14sp"
             app:layout_constraintStart_toStartOf="@+id/outSongName"
-            app:layout_constraintTop_toBottomOf="@+id/outSongName"
-            android:layout_marginTop="0dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/outSongName" />
 
         <ImageButton
             android:id="@+id/btnNext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_next"
-            app:layout_constraintTop_toBottomOf="@+id/outSongName"
             app:layout_constraintBottom_toBottomOf="@+id/seekbar"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/outSongName" />
 
         <ImageButton
             android:id="@+id/btnPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_pauses"
-            app:layout_constraintTop_toBottomOf="@+id/outSongName"
             app:layout_constraintBottom_toBottomOf="@+id/seekbar"
-            app:layout_constraintEnd_toStartOf="@+id/btnNext" />
+            app:layout_constraintEnd_toStartOf="@+id/btnNext"
+            app:layout_constraintTop_toBottomOf="@+id/outSongName" />
 
         <ImageButton
             android:id="@+id/btnPre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/margin_10dp"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_pre"
-            app:layout_constraintTop_toBottomOf="@+id/outSongName"
             app:layout_constraintBottom_toBottomOf="@+id/seekbar"
-            app:layout_constraintEnd_toStartOf="@+id/btnPlay" />
+            app:layout_constraintEnd_toStartOf="@+id/btnPlay"
+            app:layout_constraintTop_toBottomOf="@+id/outSongName" />
 
         <TextView
+            android:id="@+id/outCurrentTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-10dp"
-            android:text="00:00"
-            android:id="@+id/outCurrentTime"
+            android:layout_marginStart="@dimen/margin_start_time"
+            android:text="@string/start_time"
             app:layout_constraintStart_toEndOf="@+id/cimg"
             app:layout_constraintTop_toBottomOf="@+id/seekbar" />
+
         <TextView
+            android:id="@+id/outEndTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-10dp"
-            android:text="00:00"
-            android:id="@+id/outEndTime"
-            android:paddingRight="10dp"
+            android:layout_marginStart="@dimen/margin_start_time"
+            android:paddingRight="@dimen/margin_10dp"
+            android:text="@string/start_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekbar" />
     </androidx.constraintlayout.widget.ConstraintLayout>

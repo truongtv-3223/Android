@@ -4,21 +4,22 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.musicapp.data.model.Song
 
 interface IPlayMusic {
-    interface View{
-        fun getSongSuccess(list : MutableList<Song>)
-        fun getSongFail(m : String)
-        fun onStartSong(pos : Int)
+    interface View {
+        fun getSongSuccess(list: MutableList<Song>)
+        fun getSongFail(m: String)
+        fun onStartSong(pos: Int)
         fun onPauseSong()
         fun onPlaySong()
-        fun disPlayCurrentSongTime(time : Int)
+        fun disPlayCurrentSongTime(time: Int)
     }
-    interface Presenter{
-        fun getSong(activity : AppCompatActivity)
+
+    interface Presenter {
+        fun getSong(activity: AppCompatActivity)
         fun handlePlaySong()
         fun handleNextSong()
-        fun handleStartSong(pos : Int)
+        fun handleStartSong(pos: Int)
         fun handlePreviousSong()
-        fun handleChangSeekBar(value : Int)
+        fun handleChangSeekBar(value: Int)
         fun stopMusicService()
         fun registerBroadcast()
         fun unRegisterBroadcast()

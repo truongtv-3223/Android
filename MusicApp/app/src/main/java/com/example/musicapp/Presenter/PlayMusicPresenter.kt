@@ -28,7 +28,7 @@ class PlayMusicPresenter(val playMusicView : IPlayMusic.View,
     private lateinit var context: Context
     private lateinit var listSong: MutableList<Song>
     private var isConnection = false
-    private var handler = Handler()
+    private var handler = Handler(Looper.getMainLooper())
     private var serviceConnection = object : ServiceConnection{
         override fun onServiceConnected(p0: ComponentName?, service: IBinder?) {
             val binder = service as MusicService.LocalBinder
@@ -102,8 +102,12 @@ class PlayMusicPresenter(val playMusicView : IPlayMusic.View,
     private fun getTimeforView() {
         handler.post(object : Runnable{
             override fun run() {
-                playMusicView.disPlayCurrentSongTime(musicService.getCurrentSongTime())
-                handler.postDelayed(this,1000)
+                var time =  musicService?.getCurrentSongTime()
+                if (time != null) {
+                    playMusicView.disPlayCurrentSongTime(time)
+                }else playMusicView.disPlayCurrentSongTime(0)
+                handler.removeCallbacks(this)
+                handler.postDelayed(this, TIME_SLEEP_100)
             }
         })
     }
@@ -130,8 +134,10 @@ class PlayMusicPresenter(val playMusicView : IPlayMusic.View,
     }
 
     override fun stopMusicService() {
-        context.unbindService(serviceConnection)
-        isConnection = false
+        if(isConnection){
+            context.unbindService(serviceConnection)
+            isConnection = false
+        }
     }
 
     override fun registerBroadcast() {
