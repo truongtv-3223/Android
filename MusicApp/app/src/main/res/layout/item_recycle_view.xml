@@ -2,17 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="5dp"
+    android:layout_marginBottom="@dimen/margin_5dp"
+    android:layout_marginTop="@dimen/margin_5dp"
     android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="@dimen/size_img"
+        android:layout_height="@dimen/size_img"
         android:id="@+id/containerImageView"
-        android:elevation="0dp"
+        android:layout_marginStart="@dimen/margin_5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="@dimen/radius_8dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -21,24 +21,26 @@
             android:id="@+id/imgSong" />
     </androidx.cardview.widget.CardView>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/layout_0dp"
         android:layout_height="wrap_content"
-        android:textSize="21dp"
+        android:textSize="@dimen/text_size_17sp"
         android:textColor="@color/black"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_5dp"
         android:id="@+id/outSongName"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/containerImageView"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="10dp"
-        android:text="Song Name"/>
+        android:layout_marginStart="@dimen/margin_10dp"
+        android:text="Song Name Song Name Song Name Song Name "/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Author"
-        android:textSize="17dp"
+        android:textSize="@dimen/text_size_14sp"
         android:id="@+id/outSongAuthor"
         app:layout_constraintStart_toStartOf="@+id/outSongName"
-        app:layout_constraintTop_toBottomOf="@+id/outSongName"
-        android:layout_marginTop="0dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/outSongName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
